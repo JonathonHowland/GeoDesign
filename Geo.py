@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 
+<<<<<<< HEAD
 df = pd.read_excel(r"GeoFromPython.xls")
 
 df.dropna()
@@ -25,3 +26,7 @@ df.to_excel("GeoFinal.xlsx")
 means = df.groupby([df.State, df.EnergySource], as_index=False).Change.mean()
 
 print(means)
+=======
+df = pd.read_excel(r"GeoForPython.xls")
+print("Hello world!")
+>>>>>>> 5018150bf9babdffb4a603387853eec512700378
