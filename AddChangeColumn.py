@@ -1,4 +1,4 @@
-#Add "Change" column and save to ExcelFromPython.xls
+#Add "Change" column and save to GeoFromPython.xls
 
 import pandas as pd
 
