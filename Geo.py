@@ -1,7 +1,6 @@
 import numpy as np
 import pandas as pd
 
-<<<<<<< HEAD
 df = pd.read_excel(r"GeoFromPython.xls")
 
 df.dropna()
@@ -10,23 +9,24 @@ mask = df[df["EnergySource"].isin(["Geothermal"]) == True]
 
 mask = mask[mask["Change"].isin([0.0]) == False]
 
-mask.to_excel("ForSQL.xlsx")
+#mask["StateYear"] = mask["Year"]
 
-#df = df[(df["State"].isin(mask["State"])) & (df["Year"]).isin(mask["Year"])]
+#mask["StateYear"].apply(lambda x: x = str(x))
 
-#key_names = ["State", "Year"]
-#keys = [df["State"].unique, df["Year"].unique]
+mask["StateYear"] = mask["State"] + mask["Year"].astype("str")
 
-#df[df[key_names]==keys].to_excel("Check.xlsx")
+print(mask["StateYear"])
 
-#print(df)
+df["StateYear"] = df["State"] + df["Year"].astype("str")
+
+df = df[df.StateYear.isin(mask["StateYear"])]
+
+df = df.drop("StateYear", axis=1)
+
+print(df)
 
 df.to_excel("GeoFinal.xlsx")
 
 means = df.groupby([df.State, df.EnergySource], as_index=False).Change.mean()
 
 print(means)
-=======
-df = pd.read_excel(r"GeoForPython.xls")
-print("Hello world!")
->>>>>>> 5018150bf9babdffb4a603387853eec512700378
